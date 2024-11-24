@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pauna Scale Setup</title>
+    <script
+        type="module"
+        src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+    ></script>
+    <style>
+             :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent: #646cff;
+            --accent-hover: #7c83ff;
+            --success: #4CAF50;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            
+            /* ESP Web Tools specific variables */
+            --esp-tools-button-color: #646cff;
+            --esp-tools-button-text-color: #ffffff;
+            --esp-tools-button-border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        h2 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ol {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin: 1rem 0;
+            padding-left: 0.5rem;
+        }
+
+        li::marker {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .troubleshoot-button {
+            background: rgba(100, 108, 255, 0.1);
+            border: none;
+            color: var(--text-primary);
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .troubleshoot-button:hover {
+            background: rgba(100, 108, 255, 0.2);
+        }
+
+        .troubleshoot-button::after {
+            content: '▼';
+            font-size: 0.8em;
+            transform: translateY(-2px);
+            transition: var(--transition);
+        }
+
+        .troubleshoot-button.active::after {
+            transform: rotate(180deg);
+        }
+
+        .important-note {
+            background: rgba(100, 108, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            margin-top: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .important-note.show {
+            padding: 1rem;
+            max-height: 500px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .important-note ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .important-note ul li {
+            margin: 0.5rem 0;
+        }
+
+        esp-web-install-button::part(button) {
+            background-color: #646cff !important; 
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        esp-web-install-button::part(button):hover {
+            background-color: #7c83ff !important;
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dotOutline {
+            0%, 100% { stroke-opacity: 0.2; }
+            50% { stroke-opacity: 1; }
+        }
+        .dot-outline {
+            animation: dotOutline 3s infinite ease-in-out;
+        }
+        .dot-outline2 {
+            animation: dotOutline 3s infinite ease-in-out;
+            animation-delay: 1.5s;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <svg viewBox="-5 -5 147.5 60" style="transform: scale(0.8);">
+            <defs>
+                <style>
+                    @keyframes dotOutline {
+                        0%, 100% { stroke-opacity: 0.2; }
+                        50% { stroke-opacity: 1; }
+                    }
+                    .dot-outline {
+                        animation: dotOutline 3s infinite ease-in-out;
+                    }
+                    .dot-outline2 {
+                        animation: dotOutline 3s infinite ease-in-out;
+                        animation-delay: 1.5s;
+                    }
+                </style>
+            </defs>
+            
+            <rect x="-5" y="-5" width="147.5" height="60" fill="#121212" rx="10" ry="10"></rect>
+            <circle cx="25" cy="25" r="17.5" fill="white"></circle>
+            
+            <path d="M 18.5 25 Q 25 17.5 31.5 25" stroke="#121212" fill="none" stroke-width="1.5"></path>
+            
+            <circle cx="17.5" cy="25" r="1.75" fill="#121212"></circle>
+            <circle cx="32.5" cy="25" r="1.75" fill="#121212"></circle>
+            
+            <circle cx="17.5" cy="25" r="2.25" fill="none" stroke="#121212" stroke-width="0.5" class="dot-outline"></circle>
+            <circle cx="32.5" cy="25" r="2.25" fill="none" stroke="#121212" stroke-width="0.5" class="dot-outline2"></circle>
+            
+            <text x="55" y="32.5" fill="white" font-family="Futura, 'Trebuchet MS', sans-serif" font-weight="500" font-size="21" letter-spacing="2">PAUNA</text>
+        </svg>
+    </div>
+    <div class="container">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Connect your ESP32-C3 to your computer using a USB cable and ensure it's in download mode (hold BOOT button while connecting if necessary)</li>
+            <li>Click the Install button below and wait for the browser to detect your device</li>
+            <li>Follow the Instructions</li>
+        </ol>
+        <button class="troubleshoot-button">Having issues? Click for troubleshooting tips</button>
+        <div class="important-note">
+            Common solutions for connection issues:
+            <ul>
+                <li>Ensure you're using Chrome, Edge, or another Chromium-based browser</li>
+                <li>Try a different USB cable or port</li>
+                <li>On Windows, you might need to install the drivers first</li>
+                <li>Make sure no other program is using the COM port</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Install Firmware</h2>
+        <esp-web-install-button
+            manifest="./manifest.json"
+        ></esp-web-install-button>
+    </div>
+    <div class="container">
+        <h2>Initial Setup Instructions</h2>
+        <ol>
+            <li>After first boot, the scale will enter setting mode</li>
+            <li>Connect to the WiFi network named "Pauna Scale Setting" with your device</li>
+            <li>The configuration page should open automatically. If not, open your browser and navigate to 192.168.4.1</li>
+            <li>Place a known weight on the scale (any weight that you know the exact value of)</li>
+            <li>Enter the weight value in the calibration section of the configuration page</li>
+            <li>Remove the weight from the scale</li>
+            <li>Click the "Finish" button to complete the calibration process</li>
+        </ol>
+    </div>
+
+    <script>
+        const troubleshootBtn = document.querySelector('.troubleshoot-button');
+        const noteSection = document.querySelector('.important-note');
+        
+        troubleshootBtn.addEventListener('click', () => {
+            noteSection.classList.toggle('show');
+            troubleshootBtn.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
