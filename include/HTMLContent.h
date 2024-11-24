@@ -222,21 +222,20 @@ const char index_html[] PROGMEM = R"rawliteral(
             <div id="calStatus" class="status">Calibration saved!</div>
         </div>
         
-        <div class="gradient-section">
-            <div class="section-label">STANDBY TIME</div>
-            <div class="section-content">
-                <div class="input-group">
-                    <div id="standbyValue">2 min</div>
-                    <input type="range" id="standby" min="1" max="15" value="2" oninput="updateStandbyValue(this.value)">
-                    <button onclick="setStandby()">Set Standby Time</button>
-                </div>
-            </div>
-            <div class="section-divider"></div>
-            <div id="standbyStatus" class="status">Standby time saved!</div>
+<div class="gradient-section">
+    <div class="section-label">STANDBY TIME</div>
+    <div class="section-content">
+        <div class="input-group">
+            <input type="range" id="standby" min="1" max="15" value="2" oninput="updateStandbyValue(this.value)">
+            <button id="standbyButton" onclick="setStandby()">Set 2 min</button>
         </div>
+    </div>
+    <div class="section-divider"></div>
+    <div id="standbyStatus" class="status">Standby time saved!</div>
+</div>
 
         <div class="warning-note">
-            ⚠️ Please remove the calibration weight before finishing setup
+            Please remove the calibration weight before finishing setup
         </div>
         
         <button id="finish" onclick="finishSetup()">Finish Setup</button>
@@ -244,16 +243,16 @@ const char index_html[] PROGMEM = R"rawliteral(
 
     <script>
         function updateStandbyValue(val) {
-            document.getElementById('standbyValue').innerHTML = val + ' min';
-        }
+    document.getElementById('standbyButton').innerHTML = `Set ${val} min`;
+}
 
-        function showStatus(elementId) {
-            const status = document.getElementById(elementId);
-            status.style.display = 'block';
-            setTimeout(() => {
-                status.style.display = 'none';
-            }, 1000);
-        }
+function showStatus(elementId) {
+    const status = document.getElementById(elementId);
+    status.style.display = 'block';
+    setTimeout(() => {
+        status.style.display = 'none';
+    }, 1000);
+}
 
         function setCalibration() {
             const weight = document.getElementById('weight').value;

@@ -1,4 +1,3 @@
-// include/Config.h
 #pragma once
 
 #include <Arduino.h>
@@ -15,8 +14,8 @@
 
 // Network settings
 #define DNS_PORT 53
-#define EEPROM_SIZE 512
 
-// EEPROM address definitions
+// EEPROM definitions
+#define EEPROM_SIZE 512
 #define ADDR_CALIBRATION 0
-#define ADDR_STANDBY 16
+#define ADDR_STANDBY 8
